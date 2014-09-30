@@ -26,16 +26,19 @@ passport.use(new LocalStrategy(
   }
 ));
 
+var session = require('express-session');
+var store = new session.MemoryStore();
+
 var app = feathers()
   .configure(feathers.rest())
   .configure(feathers.socketio())
   .configure(feathersPassport({
     secret: 'feathers-rocks',
-    passport: passport
+    store: store
   }))
-  .use('/users', {
+  .use('/todos', {
     get: function(id, params, callback) {
-      console.log(params.user);
+      console.log('Got user', params.user);
 
       callback(null, {
         id: id,
