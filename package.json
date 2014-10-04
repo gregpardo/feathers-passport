@@ -1,7 +1,7 @@
 {
   "name": "feathers-passport",
-  "version": "0.1.0",
-  "description": "Feathers REST and websocket integration for PassportJS.",
+  "version": "0.0.1",
+  "description": "Feathers REST and websocket authentication with PassportJS.",
   "homepage": "https://github.com/feathersjs/feathers-passport",
   "keywords": [
     "feathers-plugin",
@@ -41,17 +41,24 @@
     "debug": "^2.0.0",
     "express-session": "^1.8.1",
     "lodash": "^2.4.1",
-    "passport": "^0.2.1",
-    "passport-local": "^1.0.0"
+    "passport": "^0.2.1"
   },
   "devDependencies": {
-    "feathers": "1.0.0-pre.1",
+    "body-parser": "^1.9.0",
+    "feathers": "^1.0.0",
+    "feathers-hooks": "^0.4.0",
+    "feathers-memory": "^0.3.4",
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.7",
     "grunt-contrib-jshint": "~0.x",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-release": "~0.5.1",
     "grunt-simple-mocha": "~0.4.0",
-    "mocha": "*"
+    "mocha": "*",
+    "passport-local": "^1.0.0",
+    "request": "^2.44.0",
+    "socket.io-client": "^1.1.0",
+    "tough-cookie": "^0.12.1",
+    "xmlhttprequest": "^1.6.0"
   }
 }

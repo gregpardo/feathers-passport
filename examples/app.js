@@ -1,26 +1,3 @@
-# Feathers Passport
-
-[![Build Status](https://travis-ci.org/feathersjs/feathers-passport.png?branch=master)](https://travis-ci.org/feathersjs/feathers-passport)
-
-feathers-passport adds shared [PassportJS](http://passportjs.org/) authentication for Feathers HTTP REST and websockets services.
-
-## Options
-
-feathers-passport will configure the cookieparser, session and Passport middleware for you.
-The following options are available:
-
-- __secret__ *required* - The session secret
-- __store__ *require* - A session store to use. Must be provided. `new require('express-session').MemoryStore();` is an option but is not recommended for production.
-- __name__ (default: `connect.sid`) - The session name (previous `key`)
-- __cookieParser__ (default: `require('cookie-parser')`) - The cookie parser middleware to use
-- __passport__ (default: `require('passport')`) - The passport module
-- __createSession__ (default: `require('express-session')`) - A function that can be called with the options and returns the actual session middleware
-
-## Example
-
-The following shows a commented example for an application using local authentication with a Feathers user service:
-
-```js
 var feathers = require('feathers');
 var passport = require('passport');
 var crypto = require('crypto');
@@ -137,47 +114,3 @@ userService.create({
 });
 
 app.listen(4000);
-```
-
-Add a `login.html` with an HTML form that allows to log our user in:
-
-```html
-<!DOCTYPE html>
-<html>
-<head lang="en">
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-  <form action="/login" method="post">
-    <div>
-      <label>Username:</label>
-      <input type="text" name="username"/>
-    </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" name="password"/>
-    </div>
-    <div>
-      <input type="submit" value="Log In"/>
-    </div>
-  </form>
-</body>
-</html>
-```
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
-
-## Author
-
-- [David Luecke](https://github.com/daffl)
-
-## License
-
-Copyright (c) 2014 David Luecke
-
-Licensed under the [MIT license](LICENSE).

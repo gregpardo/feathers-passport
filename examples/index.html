@@ -5,12 +5,20 @@
   <title></title>
 </head>
 <body>
-  <h1>Yeah!</h1>
+  <h1>feathers-passport</h1>
+  <a href="/todos/dishes">REST endpoint /todos/rest</a>
+  <pre id="log"></pre>
   <script src="socket.io/socket.io.js"></script>
   <script type="text/javascript">
     var socket = io();
-    socket.emit('todos::get', 'dishes', {}, function() {
-      console.log(arguments);
+    var el = document.getElementById('log');
+
+    socket.on('error', function() {
+      console.error(arguments)
+    })
+    socket.emit('todos::get', 'SocketIO', {}, function(error, todo) {
+      el.innerHTML = el.innerHTML + '\n Got todo:\n' +
+          JSON.stringify(todo, null, '  ');
     });
   </script>
 </body>
