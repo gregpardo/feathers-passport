@@ -16,6 +16,29 @@ The following options are available:
 - __passport__ (default: `require('passport')`) - The passport module
 - __createSession__ (default: `require('express-session')`) - A function that can be called with the options and returns the actual session middleware
 
+You can also pass a function that gets the default values so that you can use them for returning a new configuration. This can be useful to e.g. configure the [connect-mongo](https://github.com/kcbanner/connect-mongo) session store:
+
+```js
+var passport = require('passport');
+var connectMongo = require('connect-mongo');
+var feathersPassport = require('feathers-passport');
+
+var app = feathers();
+
+app.configure(feathers.rest())
+  .configure(feathers.socketio())
+  .configure(feathersPassport(function(defaults) {
+    // MongoStore needs the session function
+    var MongoStore = connectMongo(defaults.createSession);
+    return {
+      secret: 'feathers-rocks'
+      store: new MongoStore({
+        db: 'feathers-demo'
+      })
+    };
+  });
+```
+
 ## Example
 
 The following shows a commented example for an application using local authentication with a Feathers user service:
