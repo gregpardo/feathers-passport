@@ -77,7 +77,9 @@ var app = feathers()
     // Secret must be provided
     secret: 'feathers-rocks',
     // Also set a store
-    store: store
+    store: store,
+    resave: true,
+    saveUninitialized: true
   }))
   // Initialize a user service
   .use('/users', memory())
